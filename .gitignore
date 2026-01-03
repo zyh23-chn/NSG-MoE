@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+/src/outputs/*
+/src/multirun/*
+/sports-images/*
+/saved/*

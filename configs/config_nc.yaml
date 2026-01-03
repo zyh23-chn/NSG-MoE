@@ -1,0 +1,141 @@
+defaults:
+  - _self_
+
+dataset:
+  name: ele-fashion # ele-fashion
+  feat: clip # clip, imagebind
+model:
+  # name: GAT # GCN, SAGE, GAT, SAGE-h, HAN, HGT
+  # hidden_dim: 64
+  # num_layers: 5
+  # lr: 2e-4
+  # weight_decay: 0
+
+  # name: SAGE-h
+  # mode: self
+  # hidden_dim: 256
+  # num_layers: 1
+  # lr: 2e-4
+  # weight_decay: 1e-5
+
+  name: HAN
+  mode: moe
+  hidden_dim: 256
+  num_layers: 1
+  lr: 2e-4
+  weight_decay: 1e-4
+
+  # name: HGT
+  # mode: moe
+  # hidden_dim: 512
+  # num_layers: 1
+  # lr: 2e-4
+  # weight_decay: 0
+runs: 3
+n_epochs: 100
+
+# dataset:
+#   name: Reddit-M #Movies, Toys, Grocery, Reddit-S, Reddit-M
+#   feat: clip # clip, llama, qwen
+# model:
+#   # name: GCN # GCN, SAGE, GAT, SAGE-h, HAN, HGT
+#   # hidden_dim: 128
+#   # num_layers: 1
+#   # lr: 2e-4
+#   # weight_decay: 0
+
+#   name: HAN
+#   mode: moe
+#   hidden_dim: 256
+#   num_layers: 1
+#   lr: 2e-4
+#   weight_decay: 1e-5
+# runs: 3
+# n_epochs: 100
+
+# dataset:
+#   name: ABIDE
+# model:
+#   # name: GAT
+#   # hidden_dim: 16
+#   # num_layers: 1
+#   # lr: 1e-4
+#   # weight_decay: 0
+
+#   name: SAGE-h
+#   mode: moe
+#   hidden_dim: 64
+#   num_layers: 1
+#   lr: 2e-4
+#   weight_decay: 0
+# runs: 3
+# n_epochs: 200
+
+# hydra:
+#   sweeper:
+#     params:
+#       # model.name: GCN,SAGE,GAT,SAGE-h,HAN,HGT
+#       model.name: HGT
+#       dataset.feat: clip,imagebind
+
+
+# dataset:
+#   name: books-nc # ele-fashion, books-nc
+#   feat: clip
+# num_neighbors: 20
+# batch_size: 2048
+# model:
+#   name: GCN
+# mode: moe
+# gt: 
+#   type: performer # multihead, performer
+#   scale_dim: 8
+#   num_heads: 1
+#   pe: 
+#     rw_dim: 2
+#     rw_step: 4
+# hidden_dim: 512
+# num_layers: 1
+# runs: 3
+# lr: 5e-4
+# n_epochs: 5
+
+# hydra:
+#   sweeper:
+#     params:
+#       model.name: GCN,SAGE,GAT,SAGE-h,HAN,HGT
+#       dataset.feat: clip,imagebind
+
+# dataset: ele-fashion # ele-fashion, books-nc
+# num_neighbors: 20
+# batch_size: 2048
+# model: GT-HAN
+# mode: self
+# hidden_dim: 64
+# num_layers: 1
+# feat: clip
+# runs: 1
+# lr: 5e-4
+# n_epochs: 30
+
+
+# checkpoint_folder: 'output/'
+# load_checkpoint_folder: None
+# dataset_finetuned: False
+# nodes_image_ratio: 0.1
+# overlap_ratio: 0.1
+# log_steps: 1
+# accum_iter_number: 1
+# batch_size: 512
+# exclude_target_degree: 0
+# num_of_neighbors: 15
+# full_neighbor: False
+# inference_mode: 'train'
+# preload_node_emb: True
+# add_self_loop: False
+# eval_dir: ''
+# use_feature: 'original'
+# use_concat: False
+# no_eval: False
+# lr_scheduler_step_size: 5
+# lr_scheduler_gamma: 0.1

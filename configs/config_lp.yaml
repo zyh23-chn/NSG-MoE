@@ -1,0 +1,172 @@
+defaults:
+  - _self_
+
+dataset:
+  name: cloth-copurchase # cloth-copurchase, books-lp, sports-copurchase
+  feat: clip # clip, imagebind
+model:
+  # name: SAGE
+  # hidden_dim: 512
+  # num_layers: 5
+  # dropout: 0.5
+  # lr: 2e-4
+  # weight_decay: 0
+
+  # name: GCN
+  # hidden_dim: 512
+  # num_layers: 1
+  # dropout: 0
+  # lr: 2e-4
+  # weight_decay: 0
+
+  # name: GAT
+  # hidden_dim: 256
+  # num_layers: 1
+  # dropout: 0.6
+  # lr: 1e-4
+  # weight_decay: 0
+
+  # name: SAGE-h
+  # mode: self
+  # hidden_dim: 512
+  # num_layers: 1
+  # lr: 2e-4
+  # weight_decay: 0
+
+  # name: GAT-h
+  # mode: self
+  # hidden_dim: 512
+  # num_layers: 1
+  # lr: 2e-4
+  # weight_decay: 0
+
+  # name: HAN
+  # mode: moe
+  # hidden_dim: 512
+  # num_layers: 1
+  # lr: 2e-4
+  # weight_decay: 1e-4
+
+  name: HGT
+  mode: moe
+  hidden_dim: 256
+  num_layers: 1
+  lr: 2e-4
+  weight_decay: 0
+runs: 3
+n_epochs: 150
+
+# dataset:
+#   name: cloth-copurchase
+#   feat: clip
+# model:
+#   # name: SAGE
+#   # hidden_dim: 512
+#   # num_layers: 5
+#   # dropout: 0
+#   # lr: 2e-4
+#   # weight_decay: 0
+
+#   # name: GCN
+#   # hidden_dim: 512
+#   # num_layers: 1
+#   # dropout: 0
+#   # lr: 2e-4
+#   # weight_decay: 0
+
+#   # name: GAT
+#   # hidden_dim: 256
+#   # num_layers: 1
+#   # dropout: 0.6
+#   # lr: 1e-4
+#   # weight_decay: 0
+
+#   name: SAGE-h
+#   mode: self
+#   hidden_dim: 512
+#   num_layers: 1
+#   lr: 2e-4
+#   weight_decay: 0
+
+#   # name: GAT-h
+#   # mode: self
+#   # hidden_dim: 256
+#   # num_layers: 1
+#   # lr: 2e-4
+#   # weight_decay: 0
+
+#   # name: HAN
+#   # mode: self
+#   # hidden_dim: 512
+#   # num_layers: 1
+#   # lr: 2e-4
+#   # weight_decay: 0
+
+#   # name: HGT
+#   # mode: self
+#   # hidden_dim: 512
+#   # num_layers: 1
+#   # lr: 2e-4
+#   # weight_decay: 0
+# runs: 3
+# n_epochs: 150
+
+
+
+# hydra:
+#   sweeper:
+#     params:
+#       model.name: SAGE,GCN,GAT,SAGE-h,HAN,HGT
+#       dataset.name: sports-copurchase
+#       dataset.feat: clip,imagebind
+
+# dataset:
+#   name: books-lp # cloth-copurchase, books-lp
+#   feat: imagebind
+# num_neighbors: 15
+# batch_size: 8192
+# model:
+#   name: SAGE
+# mode: self
+# gt: 
+#   type: performer # multihead, performer
+#   scale_dim: 8
+#   num_heads: 1
+#   # pe: 
+#   #   rw_dim: 2
+#   #   rw_step: 2
+# hidden_dim: 64
+# out_channels: 64 # Latent space dimension
+# num_layers: 1
+# runs: 3
+# lr: 1e-5
+# weight_decay: 5e-4
+# n_epochs: 10
+
+# hydra:
+#   sweeper:
+#     params:
+#       model.name: SAGE-h,HAN,HGT
+#       dataset.name: cloth-copurchase, books-lp
+#       dataset.feat: clip,imagebind
+
+# checkpoint_folder: 'output/'
+# load_checkpoint_folder: None
+# dataset_finetuned: False
+# nodes_image_ratio: 0.1
+# overlap_ratio: 0.1
+# log_steps: 1
+# accum_iter_number: 1
+# batch_size: 512
+# exclude_target_degree: 0
+# num_of_neighbors: 15
+# full_neighbor: False
+# inference_mode: 'train'
+# preload_node_emb: True
+# add_self_loop: False
+# eval_dir: ''
+# use_feature: 'original'
+# use_concat: False
+# no_eval: False
+# lr_scheduler_step_size: 5
+# lr_scheduler_gamma: 0.1
